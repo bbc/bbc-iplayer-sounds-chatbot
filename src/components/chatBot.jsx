@@ -12,7 +12,7 @@ const ChatBotComponent = () => (
     IdentityPoolId="eu-west-2:e1f14c95-8241-493e-826c-4a4b6873ef88"
     region="eu-west-2"
     headerText="Chat with our awesome bot"
-    sessionAttributes={{ platform: "iplayer" }}
+    sessionAttributes={{ platform: "sounds" }}
   />
 );
 
