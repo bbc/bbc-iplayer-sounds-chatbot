@@ -1,28 +1,24 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import ChatBot from 'react-simple-chatbot';
-import { iPlayerTheme } from "../themes/appThemes";
-
-const steps = [
-  {
-    id: '0',
-    message: 'Welcome to react chatbot!',
-    trigger: '1',
-  },
-  {
-    id: '1',
-    user: true,
-    end: true,
-  }
-];
+import React from "react";
+// import { ThemeProvider } from "styled-components";
+// import { iPlayerTheme } from "../themes/appThemes";
+// import { Widget, renderCustomComponent } from "react-chat-widget";
+import LexChat from "./amazon-lex";
 
 const ChatBotComponent = () => (
-  <ThemeProvider theme={iPlayerTheme}>
-    <ChatBot
-        headerTitle={'iPlayer ChatBot'}
-        floating
-        steps={steps} />
-  </ThemeProvider>
+    <LexChat
+      botName="bbciPlayerSoundsChatbot"
+      IdentityPoolId="eu-west-2:e1f14c95-8241-493e-826c-4a4b6873ef88"
+      placeholder="Placeholder text"
+      backgroundColor="#FFFFFF"
+      height="430px"
+      region="eu-west-2"
+      headerText="Chat with our awesome bot"
+      headerStyle={{ backgroundColor: "#ABD5D9", fontSize: "30px" }}
+      greeting={
+        "Hello, how can I help? You can say things like 'help' to get more info"
+      }
+      alias='beta'
+    />
 );
 
 export default ChatBotComponent;
