@@ -28,6 +28,9 @@ class LexChat extends Component {
         });
         let lexruntime = new AWS.LexRuntime();
         this.lexruntime = lexruntime;
+
+        addResponseMessage('Hello, how can we help you?')
+
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -102,10 +105,10 @@ class LexChat extends Component {
         const payload = JSON.parse(message);
 
         if (platform === 'iplayer') {
-            addResponseMessage('Here you go')
+            addResponseMessage('Hmmm lets see what we can find, what about these recommendations')
             renderCustomComponent(this.iPlayerCarrouselComponent, {entities: payload.entities});
         } else {
-            addResponseMessage('Here you go')
+            addResponseMessage('Hmmm lets see what we can find, what about these recommendations')
             renderCustomComponent(this.soundsCarrouselComponent, {data: payload.data});
         }
     }
