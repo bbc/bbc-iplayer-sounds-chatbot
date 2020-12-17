@@ -5,7 +5,7 @@ import {
     addResponseMessage,
     renderCustomComponent,
 } from "react-chat-widget";
-import "react-chat-widget/lib/styles.css";
+// import "react-chat-widget/lib/styles.css";
 import {Carrousel, ContentItem} from "@bbc/iplayer-web-components";
 import {PlayableCarouselSlice} from "@bbc/sounds-components";
 
@@ -56,13 +56,13 @@ class LexChat extends Component {
                     <ContentItem
                         itemsPerRow={{xs: 2, m: 3, xl: 4}}
                         showPlayIcon="hover"
-                        title="The Assassination of Gianni Versace - American Crime Story"
-                        subtitle="Series 1: 6. Descent"
-                        synopsis="The home secretary's bodyguard must prevent her falling victim to an assassination plot."
-                        imageTemplate="https://ichef.bbci.co.uk/images/ic/{recipe}/p062h0hj.jpg"
+                        title={episode.title.default}
+                        subtitle={episode.subtitle.default}
+                        synopsis={episode.synopsis.small}
+                        imageTemplate={episode.image.default}
                         href="#"
-                        durationSubLabel="58 mins"
-                        secondarySubLabel="Available for 23 days"
+                        durationSubLabel={episode.versions[0].duration.text}
+                        secondarySubLabel={episode.versions[0].availability.remaining}
                     />
                 ))}
             </Carrousel>
@@ -86,7 +86,7 @@ class LexChat extends Component {
                 cards={cards}
                 classes=""
                 gridClasses="gel-1/1@xs"
-                moduleTitle={"Slice Title"}
+                // moduleTitle={}
                 moduleId="basic-item-slice"
                 fallbackTitle="Looking empty over here..."
                 fallbackText="This is just some fallback text, which shows when the component is empty."
@@ -102,8 +102,10 @@ class LexChat extends Component {
         const payload = JSON.parse(message);
 
         if (platform === 'iplayer') {
+            addResponseMessage('Here you go')
             renderCustomComponent(this.iPlayerCarrouselComponent, {entities: payload.entities});
         } else {
+            addResponseMessage('Here you go')
             renderCustomComponent(this.soundsCarrouselComponent, {data: payload.data});
         }
     }
